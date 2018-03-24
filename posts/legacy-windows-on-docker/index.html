@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Legacy Windows Services on Docker &middot; Zair Henrique</title>
+        <meta name="description" content="When and how to run your legacy Windows services to containers in Docker">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.37" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="Legacy Windows Services on Docker">
+<meta property="og:description" content="When and how to run your legacy Windows services to containers in Docker">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://zairhenrique.github.io/posts/legacy-windows-on-docker/">
+        <link rel="stylesheet" href="http://zairhenrique.github.io/dist/styles.css">
+        <link rel="stylesheet" href="http://zairhenrique.github.io/styles.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        
+        
+    </head>
+    <body>
+        
+
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a title="Ops, Dev" href="http://zairhenrique.github.io/">Ops, Dev</a>
+                            </h1>
+                        
+                        <a class="button-square" href="http://zairhenrique.github.io/index.xml"><i class="fa fa-rss"></i></a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" title="Github" href="https://github.com/zairhenrique">
+                                <i class="fa fa-github-alt"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="https://linkedin.com/in/zairhenrique/">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Email" title="Email" href="mailto:henriquezair@gmail.com">
+                                <i class="fa fa-envelope"></i>
+                            </a>
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+    <li class="site-nav-item">
+        <a title="About" href="/page/about/">About</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Blog" href="/">Blog</a>
+    </li>
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Legacy Windows Services on Docker</h1>
+    
+        <p class="post-description" itemprop="description">When and how to run your legacy Windows services to containers in Docker</p>
+    
+    <p class="post-date">
+        <span>Published <time datetime="2018-03-24" itemprop="datePublished">Sat, Mar 24, 2018</time></span>
+        <span>by</span>
+        <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
+            <span itemprop="name">
+                <a href="https://github.com/zairhenrique" itemprop="url" rel="author">Zair Henrique</a>
+            </span>
+        </span>
+    </p>
+</header>
+
+        <div class="post-content clearfix" itemprop="articleBody">
+    
+
+    
+
+<h1 id="intro">Intro</h1>
+
+<p><center><img src="/docker-env.png" style="width:50%;"></center></p>
+
+<p>Docker and containers are a hot topic in the DevOps community and continue to grow. By now, you can run your containers on Azure, AWS without any prior infrastructure.</p>
+
+<p>This post is about legacy services made before containers emerged and when/how to make them run on Docker.</p>
+
+<h1 id="when">When?</h1>
+
+<p>You&rsquo;ve probably asked yourself if you should port your legacy applications to run on Docker. In most scenarios, you <strong>shouldn&rsquo;t</strong>.</p>
+
+<p><center><img src="/docker-panacea.png" style="width:50%;"></center></p>
+
+<p>There are few cases in which having the capability to run an old service on a container will really be helpful.</p>
+
+<p>Here are of some of the reasons that maybe made you think about containers:</p>
+
+<ol>
+<li>You have a service that needs scalabity and orchestration.</li>
+<li>You want to have your service running in a lightweight environment (comparing to a full virtualized machine).</li>
+<li>You want fast deployment of your service.</li>
+<li>You just want to.</li>
+<li>You think Docker/containers will solve all of your problems and make your team become more agile than a ****ing falcon.</li>
+</ol>
+
+<p>For reasons 1-4, that&rsquo;s fine. Let&rsquo;s talk about it. If you thought about 5, I think you should see it as a red flag.</p>
+
+<p>As containers emerged, more and more tech companies are trying to use it in any kind of situation without a reasonable prior analysis.</p>
+
+<p>Using containers in situations where it will not deliver you any real value will only help you to increase complexity and management costs.</p>
+
+<p>Quoting Fred Brooks (<em>Mythical Man-Month</em> author):</p>
+
+<blockquote>
+<p>There is no single development, in either technology or management
+technique, which by itself promises even one order-of-magnitude
+improvement within a decade in productivity, in reliability, in simplicity.</p>
+</blockquote>
+
+<p>or, simply, <strong>no silver bullet</strong>.</p>
+
+<h1 id="legacy-services-is-it-possible">Legacy services, is it possible?</h1>
+
+<p>Yes, it is. As of 2018, we already have stable releases of Windows containers, nano server and Windows server core.</p>
+
+<p>You should be aware that, the most you rely on the full Windows environment, the bigger are the containers you will need. Windows Server Core image is larger than 3GB.</p>
+
+<p>If you have a GUI application, stop here. This is not what containers are made for.</p>
+
+<p>If you have a huge load of dependencies, bad for you. This will not be easy.</p>
+
+<p>You will more likely be in a good path if you have a console or service with little to zero user interaction.</p>
+
+<p>I will show you how. Let&rsquo;s get started.</p>
+
+<h1 id="getting-your-hands-dirty">Getting your hands dirty</h1>
+
+<p>For this example, I will be using a simple HTTP server returning &ldquo;Hello world&rdquo; for GET requests using NancyFx and TopShelf. Go install those Nuget packages or simply use your own current app.</p>
+
+<p>I&rsquo;ve built this targeting .NET Framework 4.6.</p>
+
+<p>Here&rsquo;s the code I&rsquo;ve used:</p>
+
+<pre><code class="language-csharp">using Nancy;
+using Nancy.Hosting.Self;
+using System;
+using Topshelf;
+
+namespace NancyDemoNET
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            HostFactory.Run(x =&gt;
+            {
+                x.Service&lt;NancySelfHost&gt;(s =&gt;
+                {
+                    s.ConstructUsing(name =&gt; new NancySelfHost());
+                    s.WhenStarted(tc =&gt; tc.Start());
+                    s.WhenStopped(tc =&gt; tc.Stop());
+                });
+
+                x.RunAsLocalSystem();
+                x.SetDescription(&quot;Docker Example&quot;);
+                x.SetServiceName(&quot;Nancy-SelfHost&quot;);
+            });
+
+        }
+    }
+
+    public class MainModule : NancyModule
+    {
+        public MainModule()
+        {
+            Get[&quot;/&quot;] = x =&gt; { return &quot;Hello World&quot;; };
+        }
+    }
+
+    public class NancySelfHost
+    {
+        private NancyHost m_nancyHost;
+
+        public void Start()
+        {
+            m_nancyHost = new NancyHost(new Uri(&quot;http://localhost:5000&quot;));
+            m_nancyHost.Start();
+        }
+
+        public void Stop()
+        {
+            m_nancyHost.Stop();
+        }
+    }
+}
+</code></pre>
+
+<p>I&rsquo;m assuming you already have Docker for Windows ready to go.</p>
+
+<p>If not, there are several guides on internet on how to. I can wait for you.</p>
+
+<p>&hellip;</p>
+
+<p>Ready?</p>
+
+<p>Open your favorite command line tool and run:</p>
+
+<pre><code class="language-powershell">docker pull microsoft/dotnet-framework
+</code></pre>
+
+<p>This will download an image with Windows Server Core and .NET Framework already installed.
+After this finished, check if the image is download by running</p>
+
+<pre><code class="language-powershell">docker images
+</code></pre>
+
+<p>Now, let&rsquo;s create a <strong>Dockerfile</strong>.</p>
+
+<p>Create a file named Dockerfile (exactly like that) and put it in there:</p>
+
+<pre><code class="language-docker">FROM microsoft/dotnet-framework
+SHELL [&quot;powershell&quot;]
+
+EXPOSE 5000
+
+ADD . /myapp
+</code></pre>
+
+<p>Block by block:</p>
+
+<pre><code class="language-docker">FROM microsoft/dotnet-framework
+SHELL [&quot;powershell&quot;]
+</code></pre>
+
+<p>This will say to Docker that we will start with <strong>microsoft/dotnet-framework</strong> image and use <strong>powershell</strong> as our CLI.</p>
+
+<pre><code class="language-docker">EXPOSE 5000
+</code></pre>
+
+<p>I&rsquo;m opening port 5000 here. This is because of my application, but you should see your requirements.</p>
+
+<p>This expose command only makes this port open, but you will need to make a port mapping from host to your container if you want to access using your host main address.</p>
+
+<pre><code class="language-docker">ADD . /myapp
+</code></pre>
+
+<p>This will copy the current directory on host to /myapp directory on the container.</p>
+
+<p>Now, with your app files on the same directory of the Dockerfile, run</p>
+
+<pre><code class="language-powershell">docker build --tag myfirstdockerapp .
+</code></pre>
+
+<p>Check if your Docker image got created by running <code>docker images</code> again.</p>
+
+<p>We&rsquo;re ready to go.
+Fire up your container by running</p>
+
+<pre><code class="language-powershell">docker run --detach --publish 5000:5000 myfirstdockerapp
+</code></pre>
+
+<p>Run a curl on <code>http://localhost:5000</code> to check.</p>
+
+<p>You should get something like (on PowerShell):</p>
+
+<pre><code>&gt; curl http://localhost:5000
+
+StatusCode        : 200
+StatusDescription : OK
+Content           : Hello World
+RawContent        : HTTP/1.1 200 OK
+                    Transfer-Encoding: chunked
+                    Content-Type: text/html
+                    Date: Sat, 24 Mar 2018 22:55:18 GMT
+                    Server: Microsoft-HTTPAPI/2.0
+
+                    Hello World
+Forms             : {}
+Headers           : {[Transfer-Encoding, chunked], [Content-Type, text/html], [Date, Sat, 24 Mar 2018 22:55:18 GMT],
+                    [Server, Microsoft-HTTPAPI/2.0]}
+Images            : {}
+InputFields       : {}
+Links             : {}
+ParsedHtml        : mshtml.HTMLDocumentClass
+RawContentLength  : 11
+
+</code></pre>
+
+<h1 id="show-must-go-on">Show must go on</h1>
+
+<p>This is only the beginning. Now that you got your app running inside a Docker container, try to run this on different environments (like Azure, for example).</p>
+
+<p>Dockerfile syntax is important to make more complex images, too.</p>
+
+<p>When you get all your apps running on Docker, you should start thinking about orchestration. I will probably make a post about it later.</p>
+
+<p>Thanks for reading :)</p>
+
+</div>
+
+        <footer class="post-footer clearfix">
+    
+
+    <div class="share">
+        
+            <a class="icon-twitter" href="https://twitter.com/share?text=Legacy%20Windows%20Services%20on%20Docker&url=http%3a%2f%2fzairhenrique.github.io%2fposts%2flegacy-windows-on-docker%2f"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fa fa-twitter"></i>
+                <span class="hidden">Twitter</span>
+            </a>
+        
+
+        
+            <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fzairhenrique.github.io%2fposts%2flegacy-windows-on-docker%2f"
+                onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                <i class="fa fa-facebook"></i>
+                <span class="hidden">Facebook</span>
+            </a>
+        
+
+        
+            <a class="icon-google-plus" href="https://plus.google.com/share?url=http%3a%2f%2fzairhenrique.github.io%2fposts%2flegacy-windows-on-docker%2f"
+              onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+              <i class="fa fa-google-plus"></i>
+                <span class="hidden">Google+</span>
+            </a>
+        
+        
+            <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&title=Legacy%20Windows%20Services%20on%20Docker&url=http%3a%2f%2fzairhenrique.github.io%2fposts%2flegacy-windows-on-docker%2f&summary=When%20and%20how%20to%20run%20your%20legacy%20Windows%20services%20to%20containers%20in%20Docker"
+               onclick="window.open(this.href, 'linkedin-share', 'width=554,height=481');return false;">
+               <i class="fa fa-linkedin"></i>
+               <span class="hidden">LinkedIn</span>
+            </a>
+        
+    </div>
+</footer>
+
+        
+    <div class="comments">
+        <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "Zair" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a title="Ops, Dev" href="http://zairhenrique.github.io/">Ops, Dev</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#">
+                        <i class="fa fa-angle-up"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2018 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+                <p class="footer-copyright">
+                    <span><a href="https://github.com/roryg/ghostwriter">Ghostwriter theme</a> By <a href="http://jollygoodthemes.com">JollyGoodThemes</a></span>
+                    <span>/ <a href="https://github.com/jbub/ghostwriter">Ported</a> to Hugo By <a href="https://github.com/jbub">jbub</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="http://zairhenrique.github.io/js/jquery-1.11.3.min.js"></script>
+        <script src="http://zairhenrique.github.io/js/jquery.fitvids.js"></script>
+        
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        
+        
+        <script src="http://zairhenrique.github.io/js/scripts.js"></script>
+    </body>
+</html>
+

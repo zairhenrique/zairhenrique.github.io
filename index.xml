@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ops, Dev</title>
+    <link>http://zairhenrique.github.io/</link>
+    <description>Recent content on Ops, Dev</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Zair Henrique</copyright>
+    <lastBuildDate>Sat, 24 Mar 2018 17:55:05 -0300</lastBuildDate>
+    
+	<atom:link href="http://zairhenrique.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Legacy Windows Services on Docker</title>
+      <link>http://zairhenrique.github.io/posts/legacy-windows-on-docker/</link>
+      <pubDate>Sat, 24 Mar 2018 17:55:05 -0300</pubDate>
+      
+      <guid>http://zairhenrique.github.io/posts/legacy-windows-on-docker/</guid>
+      <description>Intro 
+Docker and containers are a hot topic in the DevOps community and continue to grow. By now, you can run your containers on Azure, AWS without any prior infrastructure.
+This post is about legacy services made before containers emerged and when/how to make them run on Docker.
+When? You&amp;rsquo;ve probably asked yourself if you should port your legacy applications to run on Docker. In most scenarios, you shouldn&amp;rsquo;t.</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>http://zairhenrique.github.io/page/about/</link>
+      <pubDate>Sat, 24 Mar 2018 02:13:50 +0000</pubDate>
+      
+      <guid>http://zairhenrique.github.io/page/about/</guid>
+      <description>Me 
+Hi. I&amp;rsquo;m Zair. 22. I currently work as a Fullstack DevOps Engineer at @Accenture Digital in Rio&amp;rsquo;s office.
+Highly interest in serverless architectures, cloud-based environment orchestration, agile tooling and technologies in general.
+I&amp;rsquo;m also interest in cryptocurrencies (ethereum classic/monero/decred miner) and blockchain applications, team management, security/privacy.</description>
+    </item>
+    
+  </channel>
+</rss>
