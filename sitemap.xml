@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://zairhenrique.github.io/posts/custom-water-cooler/</loc>
+    <lastmod>2018-08-18T20:52:08-03:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://zairhenrique.github.io/posts/legacy-windows-on-docker/</loc>
     <lastmod>2018-03-24T17:55:05-03:00</lastmod>
   </url>
@@ -14,7 +19,7 @@
   
   <url>
     <loc>https://zairhenrique.github.io/</loc>
-    <lastmod>2018-03-24T17:55:05-03:00</lastmod>
+    <lastmod>2018-08-18T20:52:08-03:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -26,7 +31,7 @@
   
   <url>
     <loc>https://zairhenrique.github.io/posts/</loc>
-    <lastmod>2018-03-24T17:55:05-03:00</lastmod>
+    <lastmod>2018-08-18T20:52:08-03:00</lastmod>
     <priority>0</priority>
   </url>
   

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Custom Water Cooling &middot; Zair Henrique</title>
+        <meta name="description" content="DIY cooling for your computer">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.47" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="Custom Water Cooling">
+<meta property="og:description" content="DIY cooling for your computer">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://zairhenrique.github.io/posts/custom-water-cooler/">
+        <link rel="stylesheet" href="https://zairhenrique.github.io/dist/styles.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        
+        
+    </head>
+    <body>
+        
+
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a title="Ops, Dev" href="https://zairhenrique.github.io/">Ops, Dev</a>
+                            </h1>
+                        
+                        <a class="button-square" href="https://zairhenrique.github.io/index.xml"><i class="fa fa-rss"></i></a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" title="Github" href="https://github.com/zairhenrique">
+                                <i class="fa fa-github-alt"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="https://linkedin.com/in/zairhenrique/">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Email" title="Email" href="mailto:henriquezair@gmail.com">
+                                <i class="fa fa-envelope"></i>
+                            </a>
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+    <li class="site-nav-item">
+        <a title="About" href="/page/about/">About</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Blog" href="/">Blog</a>
+    </li>
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Custom Water Cooling</h1>
+    
+        <p class="post-description" itemprop="description">DIY cooling for your computer</p>
+    
+    <p class="post-date">
+        <span>Published <time datetime="2018-08-18" itemprop="datePublished">Sat, Aug 18, 2018</time></span>
+        <span>by</span>
+        <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
+            <span itemprop="name">
+                <a href="https://github.com/zairhenrique" itemprop="url" rel="author">Zair Henrique</a>
+            </span>
+        </span>
+    </p>
+</header>
+
+        <div class="post-content clearfix" itemprop="articleBody">
+    
+
+    
+
+<p>Hi there. Long time no see. I have other posts to finish and publish but I&rsquo;m having some troubles to manage time to work on them.</p>
+
+<p>Recently I&rsquo;ve built a custom liquid cooling loop on my personal desktop and this post is a brief overview on it.</p>
+
+<h1 id="why-liquid-water-cooling">Why liquid/water cooling?</h1>
+
+<p>For people that are not into overclocking, liquid cooling may sound strange. Fact is, as everyone knows, liquid (water-based) cooling with radiators work way better (in general) than air cooling with fans. That&rsquo;s why our cars (and every single combustion engine) and other electronics are liquid cooled.</p>
+
+<p>If you use your computer at stock settings, you will be perfectly fine with a fan to cool down your parts. However, if you do some tweaks on your processor, heat becomes a major issue.</p>
+
+<p>My new setup is based on an AMD Ryzen 5 2400G with stock clock at 3.6GHz. After some weeks with this CPU, I&rsquo;ve seen that it was thermal throttling a lot.</p>
+
+<p>It has a turbo boost clock of 3.9GHz but was not being able to keep this up. My PC was making a lot of noise because the fans are all at max RPMs.</p>
+
+<p>It was idling at 50ºC.</p>
+
+<p>Then, I got AIDA64 system stability running for only <strong>2 minutes</strong>, only one core got up to 3.9GHz and the system was already throttling at 92ºC. Why is that?</p>
+
+<p><center><img src="/stabilitytest.png" style="width:80%;"></center>
+<center><img src="/stabilitytest2.png" style="width:80%;"></center></p>
+
+<p>A (very) simplified form of measuring a CPU TDP is P = CFV^2 (where P = power, C = capacitance, V = voltage, F = frequency).</p>
+
+<p>You can see that, increasing the frequency (clock) linearly increases our power dissipation, while the power will increase with the square of the voltage.</p>
+
+<p>In most scenarios, to keep up a stable system with a superior frequency, you need to scale up the voltage. You can see where we&rsquo;re going from here, right?</p>
+
+<h1 id="why-custom-liquid-water-cooling">Why <strong>custom</strong> liquid/water cooling?</h1>
+
+<p>To be fair, there is not an objective reason for it. I already had an AIO water cooler (H80), but I was in the mood to make my own loop.</p>
+
+<p>For those willing to do your own custom loop, you will need a pump, reservoir, block, radiator, tubing, fittings and a coolant.</p>
+
+<p>The pump I&rsquo;ve used is an SC600 which has a nominal 600L/h flow rate and 3 meters pressure head. This is more than enough for a simple loop and has the advantage of being really quiet. This pump does not have a PWM-pin for a more precise speed control but you can handle them with a motherboard fan header by regulating the DCC voltage.</p>
+
+<p>I bought the reservoir and fittings from Aliexpress because I won&rsquo;t find anyone here in Brazil that has G1/4&rdquo; connectors.</p>
+
+<p>The block was also bought from Aliexpress. It is really hard to find AM4 blocks here. Water blocks are rare, AMD even more rare, AM4 blocks are almost nonexistent.</p>
+
+<p>It is a simple cooper block.</p>
+
+<p>I&rsquo;m reusing the radiator from another setup. It is a 240mm radiator, so, it will be ok for only one CPU. <strong>Important:</strong> this is an aluminum radiator. Mixing metals like cooper and aluminum with a current between them <strong>WILL</strong> corrode your entire loop because of galvanic corrosion if you just leave it there. More on that later.</p>
+
+<p>For tubing, I just bought them on a building materials store. For the coolant, if my entire loop was made if only one metal, I would just use distilled water. But if aluminum and cooper, this would give me some headaches.</p>
+
+<p>So, I need something that has anti-corrosive capabilities. Wow, what about car antifreeze? Car antifreeze (known as &ldquo;radiator additive&rdquo; here in Brazil) have huge amounts of ethylene glycol which has a major anti-corrosive action that prevents YOUR car, with several mixed metals running on a really high temperature for many miles, from corrosion. Ethylene glycol is also very good because has a great heat transfer capacity. Of course, it will not be as good as pure distilled water, but, for a 50-50 mixture, it is as good as it gets. I just got to a car shop and bought one liter of pre-diluted antifreeze for like ten bucks. It just works.</p>
+
+<p>Here is my final setup doing a leak test:
+<center><img src="/leak-test1.jpg" style="width:80%;"></center>
+<center><img src="/leak-test2.jpg" style="width:80%;"></center></p>
+
+<p><strong>Protip</strong>: do the leak test for at least 24hrs with your computer <strong>off</strong> (only pump) and with paper to prevent water/fluid to get into your components.</p>
+
+<p>After this initial leak test, make some stress tests with the computer on but maintain the paper for at least more 24hrs. High temperatures can soften the tubing on the fittings making them slide out. This is something to worry about.</p>
+
+<h1 id="results">Results</h1>
+
+<p>Just after booting up my machine, some good news. My idle temperatures got from 50~55ºC to 30~35ºC (both in a room temperature of 22ºC).</p>
+
+<p>Right after that, I did some stress testing with some awesome results, but I lost them :( So, I&rsquo;m running a stress test right now as I&rsquo;m writing this. I&rsquo;m stable at 3.8GHz with the stress test running, VS Code, 2 virtual machines, Spotify and other background processes.</p>
+
+<p>Take a look at these results:
+<center><img src="/stabilitytest3.png" style="width:80%;"></center></p>
+
+<p>Peak temperature at full load was at 65ºC with FPU test (which is a REALLY heat maker), with 1.408V and with an average 56ºC.</p>
+
+<p>This build is running solid for over a month with no signs of corrosion or leak.</p>
+
+<p>Next step? Let&rsquo;s see where we can take this CPU up to! :p
+<center><img src="/loop.jpg" style="width:80%;"></center></p>
+
+</div>
+
+        <footer class="post-footer clearfix">
+    
+
+    <div class="share">
+        
+            <a class="icon-twitter" href="https://twitter.com/share?text=Custom%20Water%20Cooling&url=https%3a%2f%2fzairhenrique.github.io%2fposts%2fcustom-water-cooler%2f"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fa fa-twitter"></i>
+                <span class="hidden">Twitter</span>
+            </a>
+        
+
+        
+            <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fzairhenrique.github.io%2fposts%2fcustom-water-cooler%2f"
+                onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                <i class="fa fa-facebook"></i>
+                <span class="hidden">Facebook</span>
+            </a>
+        
+
+        
+            <a class="icon-google-plus" href="https://plus.google.com/share?url=https%3a%2f%2fzairhenrique.github.io%2fposts%2fcustom-water-cooler%2f"
+              onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+              <i class="fa fa-google-plus"></i>
+                <span class="hidden">Google+</span>
+            </a>
+        
+        
+            <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&title=Custom%20Water%20Cooling&url=https%3a%2f%2fzairhenrique.github.io%2fposts%2fcustom-water-cooler%2f&summary=DIY%20cooling%20for%20your%20computer"
+               onclick="window.open(this.href, 'linkedin-share', 'width=554,height=481');return false;">
+               <i class="fa fa-linkedin"></i>
+               <span class="hidden">LinkedIn</span>
+            </a>
+        
+    </div>
+</footer>
+
+        
+    <div class="comments">
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "zairhenrique" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a title="Ops, Dev" href="https://zairhenrique.github.io/">Ops, Dev</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#">
+                        <i class="fa fa-angle-up"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2018 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+                <p class="footer-copyright">
+                    <span><a href="https://github.com/roryg/ghostwriter">Ghostwriter theme</a> By <a href="http://jollygoodthemes.com">JollyGoodThemes</a></span>
+                    <span>/ <a href="https://github.com/jbub/ghostwriter">Ported</a> to Hugo By <a href="https://github.com/jbub">jbub</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="https://zairhenrique.github.io/js/jquery-1.11.3.min.js"></script>
+        <script src="https://zairhenrique.github.io/js/jquery.fitvids.js"></script>
+        
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        
+        
+        <script src="https://zairhenrique.github.io/js/scripts.js"></script>
+    </body>
+</html>
+

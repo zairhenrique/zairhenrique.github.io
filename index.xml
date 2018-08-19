@@ -7,10 +7,21 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Zair Henrique</copyright>
-    <lastBuildDate>Sat, 24 Mar 2018 17:55:05 -0300</lastBuildDate>
+    <lastBuildDate>Sat, 18 Aug 2018 20:52:08 -0300</lastBuildDate>
     
 	<atom:link href="https://zairhenrique.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Custom Water Cooling</title>
+      <link>https://zairhenrique.github.io/posts/custom-water-cooler/</link>
+      <pubDate>Sat, 18 Aug 2018 20:52:08 -0300</pubDate>
+      
+      <guid>https://zairhenrique.github.io/posts/custom-water-cooler/</guid>
+      <description>Hi there. Long time no see. I have other posts to finish and publish but I&amp;rsquo;m having some troubles to manage time to work on them.
+Recently I&amp;rsquo;ve built a custom liquid cooling loop on my personal desktop and this post is a brief overview on it.
+Why liquid/water cooling? For people that are not into overclocking, liquid cooling may sound strange. Fact is, as everyone knows, liquid (water-based) cooling with radiators work way better (in general) than air cooling with fans.</description>
+    </item>
     
     <item>
       <title>Legacy Windows Services on Docker</title>
@@ -32,8 +43,8 @@ When? You&amp;rsquo;ve probably asked yourself if you should port your legacy ap
       <guid>https://zairhenrique.github.io/page/about/</guid>
       <description>Me 
 Hi. I&amp;rsquo;m Zair. 22. I currently work as a Fullstack DevOps Engineer at @Accenture Digital in Rio&amp;rsquo;s office.
-Highly interest in serverless architectures, cloud-based environment orchestration, agile tooling and technologies in general.
-I&amp;rsquo;m also interest in cryptocurrencies (ethereum classic/monero/decred miner) and blockchain applications, team management, security/privacy.</description>
+Highly interested in serverless architectures, cloud-based environment orchestration, agile tooling and technologies in general.
+I&amp;rsquo;m also interested in cryptocurrencies (ethereum classic/monero/decred miner) and blockchain applications, team management, security/privacy.</description>
     </item>
     
   </channel>

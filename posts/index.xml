@@ -7,10 +7,21 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Zair Henrique</copyright>
-    <lastBuildDate>Sat, 24 Mar 2018 17:55:05 -0300</lastBuildDate>
+    <lastBuildDate>Sat, 18 Aug 2018 20:52:08 -0300</lastBuildDate>
     
 	<atom:link href="https://zairhenrique.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Custom Water Cooling</title>
+      <link>https://zairhenrique.github.io/posts/custom-water-cooler/</link>
+      <pubDate>Sat, 18 Aug 2018 20:52:08 -0300</pubDate>
+      
+      <guid>https://zairhenrique.github.io/posts/custom-water-cooler/</guid>
+      <description>Hi there. Long time no see. I have other posts to finish and publish but I&amp;rsquo;m having some troubles to manage time to work on them.
+Recently I&amp;rsquo;ve built a custom liquid cooling loop on my personal desktop and this post is a brief overview on it.
+Why liquid/water cooling? For people that are not into overclocking, liquid cooling may sound strange. Fact is, as everyone knows, liquid (water-based) cooling with radiators work way better (in general) than air cooling with fans.</description>
+    </item>
     
     <item>
       <title>Legacy Windows Services on Docker</title>
